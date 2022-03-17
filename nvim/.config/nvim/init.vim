@@ -2,7 +2,7 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 
 set path+=$PWD/**
-
+#this is a test
 syntax on
 set noerrorbells
 set guicursor=
