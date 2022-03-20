@@ -116,7 +116,7 @@ bindsym $mod+z split h
 bindsym $mod+v split v
 
 # Enter alacritty
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
