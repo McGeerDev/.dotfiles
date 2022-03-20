@@ -2,7 +2,7 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 
 set path+=$PWD/**
-#this is a test
+
 syntax on
 set noerrorbells
 set guicursor=
@@ -28,7 +28,9 @@ highlight ColorColumn ctermbg=0
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'leafgarland/typescript-vim'
 Plug 'vim-utils/vim-man'
 Plug 'git@github.com:Valloric/YouCompleteMe.git'
@@ -45,6 +47,26 @@ set background=dark
 inoremap jk <esc>
 " Yank from cursor to the end of the line
 nnoremap Y y$
+
+"nnoremap <C-n> :NERDTreeToggle<CR>
+"vnoremap ++ <plug>NERDCommenterToggle
+"nnoremap ++ <plug>NERDCommenterToggle
+"
+"let g:NERDTreeGitStatusWithFlags = 1
+"let g:NERDTreeIgnore = ['^node_modules$']
+
+" Apply prettier linting on save
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" coc config
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-json', 
+  \ ]
 
 " Keep cursor centered
 nnoremap n nzzzv
