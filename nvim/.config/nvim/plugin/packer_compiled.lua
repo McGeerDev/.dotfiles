@@ -219,6 +219,11 @@ _G.packer_plugins = {
     path = "/home/devanmcgeer/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
+  ["trouble.nvim"] = {
+    loaded = true,
+    path = "/home/devanmcgeer/.local/share/nvim/site/pack/packer/start/trouble.nvim",
+    url = "https://github.com/folke/trouble.nvim"
+  },
   ["vim-bbye"] = {
     loaded = true,
     path = "/home/devanmcgeer/.local/share/nvim/site/pack/packer/start/vim-bbye",

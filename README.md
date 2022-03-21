@@ -8,6 +8,7 @@ This repo is to manage my vim experience in a single repo so that I can clone th
 - Stylua
 - Nerdfonts
 - Stow (for install script)
+- Ripgrep (Telescope `live_grep` depends on it)
 
 ### Optional
 - Alacritty (Edit i3/config with different terminal at `bindsym $mod+Return exec alacritty`)
