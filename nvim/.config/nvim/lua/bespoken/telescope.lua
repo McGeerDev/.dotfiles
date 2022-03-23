@@ -12,6 +12,9 @@ telescope.setup {
     selection_caret = " ",
     path_display = { "smart" },
 
+    file_sorter = require("telescope.sorters").get_fzy_sorter,
+    file_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+
     mappings = {
       i = {
         ["<C-n>"] = actions.cycle_history_next,
@@ -87,6 +90,10 @@ telescope.setup {
     -- builtin picker
   },
   extensions = {
+    fzy_native = {
+      override_generic_sorter = false,
+      override_file_sorter = true,
+    }
     -- Your extension configuration goes here:
     -- extension_name = {
     --   extension_config_key = value,
@@ -95,3 +102,4 @@ telescope.setup {
   },
 }
 
+require('telescope').load_extension('fzy_native')

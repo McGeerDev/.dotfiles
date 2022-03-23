@@ -204,6 +204,11 @@ _G.packer_plugins = {
     path = "/home/devanmcgeer/.local/share/nvim/site/pack/packer/start/project.nvim",
     url = "https://github.com/ahmedkhalf/project.nvim"
   },
+  ["telescope-fzy-native.nvim"] = {
+    loaded = true,
+    path = "/home/devanmcgeer/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim",
+    url = "https://github.com/nvim-telescope/telescope-fzy-native.nvim"
+  },
   ["telescope-media-files.nvim"] = {
     loaded = true,
     path = "/home/devanmcgeer/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim",
