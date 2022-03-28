@@ -54,6 +54,11 @@ keymap("n", "J", "mzJ`z", opts) -- Acts how normal <S-j> does except keeps curso
 keymap("v", ">", ">gv", opts) -- Indent Right
 keymap("v", "<", "<gv", opts) -- Indent Left
 
+-- Comments
+-- Visual mode
+keymap("n", "<C-_>", '<ESC><cmd>lua require("Comment.api").toggle_current_linewise()<CR>', opts)
+-- keymap("v", "<C-_>", '<ESC><CMD>lua require("Comment.api").toggle_blockwise_op(vim.fn.visualmode())<CR>', opts)
+
 -- Move text
 keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
