@@ -1,0 +1,3 @@
+[submodule "pkms"]
+	path = pkms
+	url = git@github.com:McGeerDev/pkms.git
