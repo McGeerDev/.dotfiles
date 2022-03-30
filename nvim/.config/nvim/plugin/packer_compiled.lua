@@ -159,6 +159,11 @@ _G.packer_plugins = {
     path = "/home/devanmcgeer/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
     url = "https://github.com/williamboman/nvim-lsp-installer"
   },
+  ["nvim-lsp-ts-utils"] = {
+    loaded = true,
+    path = "/home/devanmcgeer/.local/share/nvim/site/pack/packer/start/nvim-lsp-ts-utils",
+    url = "https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/devanmcgeer/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
@@ -209,11 +214,6 @@ _G.packer_plugins = {
     path = "/home/devanmcgeer/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzy-native.nvim"
   },
-  ["telescope-media-files.nvim"] = {
-    loaded = true,
-    path = "/home/devanmcgeer/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim",
-    url = "https://github.com/nvim-telescope/telescope-media-files.nvim"
-  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/devanmcgeer/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -233,6 +233,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/devanmcgeer/.local/share/nvim/site/pack/packer/start/vim-bbye",
     url = "https://github.com/moll/vim-bbye"
+  },
+  vimgenda = {
+    loaded = true,
+    path = "/home/devanmcgeer/.local/share/nvim/site/pack/packer/start/vimgenda",
+    url = "https://github.com/McGeerDev/vimgenda"
   },
   ["which-key.nvim"] = {
     loaded = true,

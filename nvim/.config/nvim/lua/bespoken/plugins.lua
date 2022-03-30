@@ -45,7 +45,7 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
   use "windwp/nvim-autopairs"
-  use "numToStr/Comment.nvim" -- Easily comment stuff 
+  use "numToStr/Comment.nvim" -- Easily comment stuff
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
   use "akinsho/bufferline.nvim"
@@ -56,6 +56,10 @@ return packer.startup(function(use)
   use "lewis6991/impatient.nvim"
   use "folke/which-key.nvim"
   use "folke/trouble.nvim" -- Diagnostics made simple
+
+
+  --Personal
+  use "McGeerDev/vimgenda"
 
   -- Colorschemes
   use  "ellisonleao/gruvbox.nvim" 
@@ -77,10 +81,10 @@ return packer.startup(function(use)
   use "williamboman/nvim-lsp-installer"
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "jose-elias-alvarez/nvim-lsp-ts-utils"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
-  use "nvim-telescope/telescope-media-files.nvim"
   use "nvim-telescope/telescope-fzy-native.nvim"
 
   -- Treesitter

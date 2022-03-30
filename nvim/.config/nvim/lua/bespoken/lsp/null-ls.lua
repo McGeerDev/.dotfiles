@@ -18,6 +18,10 @@ null_ls.setup({
 		}),
 		formatting.fixjson,
 		formatting.stylua,
+		formatting.eslint_d.with({
+			extra_args = { "--single-quote", "--jsx-single-quote" },
+			prefer_local = "node_modules/.bin",
+		}),
 		diagnostics.eslint_d.with({
 			prefer_local = "node_modules/.bin",
 		}),
