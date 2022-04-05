@@ -18,8 +18,8 @@ null_ls.setup({
 		}),
 		formatting.fixjson,
 		formatting.stylua,
-		formatting.eslint_d,
-		diagnostics.eslint_d,
-		code_actions.eslint_d,
+		-- formatting.eslint_d,
+		-- diagnostics.eslint_d,
+		-- code_actions.eslint_d,
 	},
 })

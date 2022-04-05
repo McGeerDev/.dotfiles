@@ -6,4 +6,5 @@ end
 require "bespoken.lsp.lsp-installer"
 require("bespoken.lsp.handlers").setup()
 require "bespoken.lsp.null-ls"
+require("bespoken.lsp.settings.jose_ts_config")
 
