@@ -62,7 +62,7 @@ return packer.startup(function(use)
   use "McGeerDev/vimgenda"
 
   -- Colorschemes
-  use  "ellisonleao/gruvbox.nvim" 
+  use  "ellisonleao/gruvbox.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -93,7 +93,7 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
   use "JoosepAlviste/nvim-ts-context-commentstring"
-  
+
   -- Git
   use "lewis6991/gitsigns.nvim"
 
