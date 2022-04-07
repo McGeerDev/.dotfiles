@@ -6,6 +6,10 @@ local buf_map = function(bufnr, mode, lhs, rhs, opts)
 	})
 end
 
+local formatting = null_ls.builtins.formatting
+local diagnostics = null_ls.builtins.diagnostics
+local code_actions = null_ls.builtins.code_actions
+
 local on_attach = function(client, bufnr)
 	vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
 	vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
@@ -45,11 +49,13 @@ lspconfig.tsserver.setup({
 		on_attach(client, bufnr)
 	end,
 })
+
+
 null_ls.setup({
 	sources = {
-		null_ls.builtins.diagnostics.eslint,
-		null_ls.builtins.code_actions.eslint,
-		null_ls.builtins.formatting.prettier,
+		diagnostics.eslint,
+		code_actions.eslint,
+		formatting.prettier,
 	},
 	on_attach = on_attach,
 })
