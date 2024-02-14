@@ -1,0 +1,8 @@
+require("core.configs.lsp_config")
+require("core.configs.completions")
+require("core.configs.telescope")
+require("core.configs.treesitter")
+require("core.configs.overrides")
+require("core.configs.copilot")
+require("core.configs.lualine")
+require("core.configs.gitsigns")

@@ -1,0 +1,3 @@
+git -C ./pkms/ add .
+git -C ./pkms/ commit -m "another commit"
+git -C ./pkms/ push 
