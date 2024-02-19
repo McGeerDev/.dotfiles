@@ -22,21 +22,21 @@ vim.keymap.set('n', 'E', '$', { desc = 'Move to the end of the line' })
 vim.keymap.set('n', 'B', '^', { desc = 'Move to the start of the line' })
 
 -- Windows
-vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
-vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
-vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
-vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
+vim.keymap.set('n', '<c-k>', ':wincmd k<CR>', {noremap=false})
+vim.keymap.set('n', '<c-j>', ':wincmd j<CR>', {noremap=false})
+vim.keymap.set('n', '<c-h>', ':wincmd h<CR>', {noremap=false})
+vim.keymap.set('n', '<c-l>', ':wincmd l<CR>', {noremap=false})
 
--- buffers
-vim.api.nvim_set_keymap("n", "tk", ":blast<enter>", {noremap=false})
-vim.api.nvim_set_keymap("n", "tj", ":bfirst<enter>", {noremap=false})
-vim.api.nvim_set_keymap("n", "th", ":bprev<enter>", {noremap=false})
-vim.api.nvim_set_keymap("n", "tl", ":bnext<enter>", {noremap=false})
-vim.api.nvim_set_keymap("n", "td", ":bdelete<enter>", {noremap=false})
+-- Buffers
+vim.keymap.set("n", "tk", ":blast<enter>", {noremap=false, desc = "[T]arget the last buffer"})
+vim.keymap.set("n", "tj", ":bfirst<enter>", {noremap=false})
+vim.keymap.set("n", "th", ":bprev<enter>", {noremap=false})
+vim.keymap.set("n", "tl", ":bnext<enter>", {noremap=false})
+vim.keymap.set("n", "td", ":bdelete<enter>", {noremap=false})
 
 -- Remove search highlight
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 
 -- Twilight
-vim.api.nvim_set_keymap("n", "tw", ":Twilight<enter>", {desc="Toggle Twilight",noremap=false})
+vim.keymap.set("n", "tw", ":Twilight<enter>", {desc="Toggle Twilight",noremap=false})
 
