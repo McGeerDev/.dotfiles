@@ -11,14 +11,13 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
 end
 
-
-
 cmp.setup {
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
+
   completion = {
     completeopt = 'menu,menuone,noinsert',
   },
@@ -55,6 +54,6 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'path' },
-    { name = 'copilot' },
+    { name = 'copilot', group_index = 2 },
   },
 }

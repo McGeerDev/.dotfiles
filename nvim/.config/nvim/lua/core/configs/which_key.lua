@@ -5,6 +5,7 @@ local wk=require("which-key")
 wk.register({
   f = {
     name = "File",
+      e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
       f = { "<cmd>Telescope find_files<cr>", "Find File" },
       r = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
       n = { "<cmd>enew<cr>", "New File" },
