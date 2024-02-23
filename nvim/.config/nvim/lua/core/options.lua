@@ -45,3 +45,6 @@ vim.o.relativenumber = true
 
 -- Show command on the last line of the screen
 vim.o.showcmd = true
+
+-- Automatically indents on new lines
+vim.o.smartindent = true
