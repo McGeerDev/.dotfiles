@@ -20,6 +20,12 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- Movement keymaps
 vim.keymap.set('n', 'E', '$', { desc = 'Move to the end of the line' })
 vim.keymap.set('n', 'B', '^', { desc = 'Move to the start of the line' })
+vim.keymap.set('n', 'c-u', '<c-u>zz')
+vim.keymap.set('n', 'c-d', '<c-d>zz')
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+vim.keymap.set('n', '<leader>cf', '0<c-g>', { desc = 'Show full file path' })
+vim.keymap.set('n', 'Q', '<nop>')
 
 -- Windows
 vim.keymap.set('n', '<c-k>', ':wincmd k<CR>', {noremap=false})
