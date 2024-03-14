@@ -41,7 +41,7 @@ vim.keymap.set("n", "tl", ":bnext<enter>", { noremap = false })
 vim.keymap.set("n", "td", ":bdelete<enter>", { noremap = false })
 
 -- Remove search highlight
-vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+vim.keymap.set('n', '<leader>nh', ':nohlsearch<CR>')
 
 -- Twilight
 vim.keymap.set("n", "tw", ":Twilight<enter>", { desc = "Toggle Twilight", noremap = false })
