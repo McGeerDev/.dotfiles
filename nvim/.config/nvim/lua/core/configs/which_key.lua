@@ -1,18 +1,17 @@
-local wk=require("which-key")
-
+local wk = require('which-key')
 
 -- FILE METHODS
 wk.register({
   f = {
-    name = "File",
-      e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-      f = { "<cmd>Telescope find_files<cr>", "Find File" },
-      r = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
-      n = { "<cmd>enew<cr>", "New File" },
-      s = { "<cmd>w<cr>", "Save File" },
-      q = { "<cmd>q<cr>", "Quit File" },
+    name = 'File',
+    e = { '<cmd>NvimTreeToggle<cr>', 'Explorer' },
+    f = { '<cmd>Telescope find_files<cr>', 'Find File' },
+    r = { '<cmd>Telescope oldfiles<cr>', 'Recent Files' },
+    n = { '<cmd>enew<cr>', 'New File' },
+    w = { '<cmd>w<cr>', 'Write to File' },
+    q = { '<cmd>q<cr>', 'Quit File' },
   },
-}, { prefix = "<leader>" })
+}, { prefix = '<leader>' })
 
 
 -- Old which-key configs in lsp_config.lua
@@ -27,9 +26,18 @@ wk.register {
   ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
 }
+
 -- register which-key VISUAL mode
 -- required for visual <leader>hs (hunk stage) to work
 wk.register({
   ['<leader>'] = { name = 'VISUAL <leader>' },
   ['<leader>h'] = { 'Git [H]unk' },
 }, { mode = 'v' })
+
+-- Git related keys
+wk.register({
+  g = {
+    name = 'Git',
+    G = { '<cmd>Git<CR>', 'Git Menu' },
+  },
+}, { prefix = '<leader>' })
