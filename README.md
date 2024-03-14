@@ -10,3 +10,9 @@ This repo is to manage my vim experience in a single repo so that I can clone th
 - Stow (for install script)
 - Ripgrep (Telescope `live_grep` depends on it)
 
+
+## TODOS
+[] Add auto imports for golang - The packages should automatically be imported after being called in the methods.
+[] Add git actions - Push, Pull, Stash, Rebase
+[] 
+
