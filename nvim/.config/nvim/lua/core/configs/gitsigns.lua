@@ -30,7 +30,8 @@ require('gitsigns').setup {
     end, { expr = true })
 
     -- Actions
-    map({ 'n', 'v' }, '<leader>hs', gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }, { desc = 'Gitsigns stage_hunk' })
+    --map({ 'n', 'v' }, '<leader>hs', gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }, { desc = 'Gitsigns stage_hunk' })
+    map({ 'n', 'v' }, '<leader>hs', gs.stage_hunk, { desc = 'Gitsigns stage_hunk' })
     map({ 'n', 'v' }, '<leader>hr', gs.reset_hunk, { desc = 'Gitsigns reset_hunk' })
     map('n', '<leader>hS', gs.stage_buffer, { desc = 'Gitsigns stage_buffer' })
     --map('n', '<leader>ha', gs.stage_hunk, { desc = 'Gitsigns stage_hunk' })
