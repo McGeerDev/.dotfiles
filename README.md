@@ -13,6 +13,14 @@ This repo is to manage my vim experience in a single repo so that I can clone th
 
 ## TODOS
 [] Add auto imports for golang - The packages should automatically be imported after being called in the methods.
+
 [] Add git actions - Push, Pull, Stash, Rebase
+
 [] 
 
+
+## Mac Productivity Apps
+
+- RayCast - Upgraded mac search: `CMD` + `SPACE`
+- Rectangle - Window management with the keyboard
+- Warp - Upgraded terminal with AI command autocomplete
