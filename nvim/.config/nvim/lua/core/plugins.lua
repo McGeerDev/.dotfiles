@@ -25,16 +25,8 @@ require('lazy').setup({
   'nvim-tree/nvim-tree.lua',
 
   -- Detect tabstop and shiftwidth automatically
+  {
   'tpope/vim-sleuth',
-  -- 'github/copilot.vim',
-  'zbirenbaum/copilot.lua',
-  {
-    'zbirenbaum/copilot-cmp',
-    config = function()
-      require('copilot_cmp').setup()
-    end
-  },
-  {
     "folke/twilight.nvim",
     opts = {
       -- your configuration comes here
@@ -225,6 +217,18 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
+  },
+  
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
