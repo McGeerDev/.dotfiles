@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 --[[
 
 =====================================================================
@@ -251,8 +252,12 @@ rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-	"NMAC427/guess-indent.nvim", -- Detect tabstop and shiftwidth automatically
-
+	{
+		"nmac427/guess-indent.nvim", -- Detect tabstop and shiftwidth automatically
+		config = function()
+			require("guess-indent").setup({})
+		end,
+	},
 	-- NOTE: Plugins can also be added by using a table,
 	-- with the first argument being the link and the following
 	-- keys can be used to configure plugin behavior/loading/etc.
@@ -285,6 +290,23 @@ require("lazy").setup({
 				topdelete = { text = "‾" },
 				changedelete = { text = "~" },
 			},
+		},
+	},
+	{
+		"f-person/git-blame.nvim",
+		-- load the plugin at startup
+		event = "VeryLazy",
+		-- Because of the keys part, you will be lazy loading this plugin.
+		-- The plugin will only load once one of the keys is used.
+		-- If you want to load the plugin at startup, add something like event = "VeryLazy",
+		-- or lazy = false. One of both options will work.
+		opts = {
+			-- your configuration comes here
+			-- for example
+			enabled = true, -- if you want to enable the plugin
+			message_template = " <summary> • <date> • <author> • <<sha>>", -- template for the blame message, check the Message template section for more options
+			date_format = "%m-%d-%Y %H:%M:%S", -- template for the date, check Date format section for more options
+			virtual_text_column = 1, -- virtual text start column, check Start virtual text at column section for more options
 		},
 	},
 
@@ -420,6 +442,11 @@ require("lazy").setup({
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
+					},
+				},
+				mappings = {
+					n = {
+						["jk"] = "<Esc>",
 					},
 				},
 			})
@@ -850,7 +877,7 @@ require("lazy").setup({
 				-- <c-k>: Toggle signature help
 				--
 				-- See :h blink-cmp-config-keymap for defining your own keymap
-				preset = "default",
+				preset = "enter",
 
 				-- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
 				--    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -976,6 +1003,7 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
+				"go",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
@@ -984,7 +1012,7 @@ require("lazy").setup({
 				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
 				--  If you are experiencing weird indenting issues, add the language to
 				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
-				additional_vim_regex_highlighting = { "ruby" },
+				additional_vim_regex_highlighting = { "ruby", "typescript", "terraform", "go" },
 			},
 			indent = { enable = true, disable = { "ruby" } },
 		},
@@ -1005,6 +1033,66 @@ require("lazy").setup({
 	--  Here are some example plugins that I've included in the Kickstart repository.
 	--  Uncomment any of the lines below to enable them (you will need to restart nvim).
 	--
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("harpoon"):setup()
+		end,
+		keys = {
+			{
+				"<leader>A",
+				function()
+					require("harpoon"):list():add()
+				end,
+				desc = "harpoon file",
+			},
+			{
+				"<leader>a",
+				function()
+					local harpoon = require("harpoon")
+					harpoon.ui:toggle_quick_menu(harpoon:list())
+				end,
+				desc = "harpoon quick menu",
+			},
+			{
+				"<C-h>",
+				function()
+					require("harpoon"):list():select(1)
+				end,
+				desc = "harpoon to file 1",
+			},
+			{
+				"<C-j>",
+				function()
+					require("harpoon"):list():select(2)
+				end,
+				desc = "harpoon to file 2",
+			},
+			{
+				"<C-k>",
+				function()
+					require("harpoon"):list():select(3)
+				end,
+				desc = "harpoon to file 3",
+			},
+			{
+				"<C-l>",
+				function()
+					require("harpoon"):list():select(4)
+				end,
+				desc = "harpoon to file 4",
+			},
+			{
+				"<C-;>",
+				function()
+					require("harpoon"):list():select(5)
+				end,
+				desc = "harpoon to file 5",
+			},
+		},
+	},
 	-- require 'kickstart.plugins.debug',
 	-- require 'kickstart.plugins.indent_line',
 	-- require 'kickstart.plugins.lint',
