@@ -83,7 +83,7 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 
 -- Exit view and insert modes
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode" })
-vim.keymap.set("v", "jk", "<Esc>", { desc = "Exit visual mode" })
+--vim.keymap.set("v", "jk", "<Esc>", { desc = "Exit visual mode" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -868,7 +868,7 @@ require("lazy").setup({
 			---@diagnostic disable-next-line: missing-fields
 			require("tokyonight").setup({
 				styles = {
-					comments = { italic = false }, -- Disable italics in comments
+					comments = { italic = true }, -- Disable italics in comments
 				},
 			})
 
