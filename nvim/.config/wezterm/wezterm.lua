@@ -28,7 +28,16 @@ local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
 		return "tokyonight_night"
 	else
-		return "Google (light) (terminal.sexy)"
+		-- color schemes I like
+		-- "Google (light) (terminal.sexy)",
+		-- "Google Light (Gogh)"
+		-- "nord-light"
+		-- "Homebrew Light (Gogh)"
+		-- "Papercolor Light (Gogh)"
+		-- "dayfox",
+
+		--return "GruvboxLight"
+		return "Rosé Pine Dawn (Gogh)"
 	end
 end
 
@@ -49,19 +58,13 @@ config = {
 	default_cursor_style = "SteadyBar",
 
 	-- For example, changing the color scheme:
-	--color_scheme = "Google (light) (terminal.sexy)",
-	--color_scheme = 'Google Light (Gogh)'
-	--color_scheme = "nord-light"
-	--color_scheme = "Homebrew Light (Gogh)"
-	--color_scheme = "Papercolor Light (Gogh)"
-	--color_scheme = "dayfox",
 
 	-- Tab settings
-	hide_tab_bar_if_only_one_tab = true,
+	hide_tab_bar_if_only_one_tab = false,
 	enable_tab_bar = true,
 	use_fancy_tab_bar = false,
 	tab_bar_at_bottom = true,
-	show_tab_index_in_tab_bar = false,
+	show_tab_index_in_tab_bar = true,
 
 	window_background_opacity = 0.85,
 	macos_window_background_blur = 10,

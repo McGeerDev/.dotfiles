@@ -15,6 +15,7 @@ vim.o.relativenumber = true
 vim.o.mouse = "a" -- Enable mouse mode, for resizing splits
 
 vim.o.showmode = false -- Mode is in status line
+vim.o.background = "light"
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -42,6 +43,9 @@ vim.o.updatetime = 250
 -- Configure how new splits should be opened
 vim.o.splitright = true
 vim.o.splitbelow = true
+-- Set tab spaces to 2
+vim.bo[0].expandtab = true
+vim.bo[0].shiftwidth = 2
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
@@ -80,6 +84,10 @@ vim.keymap.set("n", "-", "<CMD>Oil<CR>")
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+
+-- Center cursor on half-page jumps
+vim.keymap.set("n", "<Ctrl>u", "<C-u>zz")
+vim.keymap.set("n", "<Ctrl>d", "<C-d>zz")
 
 -- Exit view and insert modes
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode" })
@@ -145,6 +153,7 @@ rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
 require("lazy").setup({
+	{ import = "plugins" },
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 	{
 		"nmac427/guess-indent.nvim", -- Detect tabstop and shiftwidth automatically
@@ -322,7 +331,6 @@ require("lazy").setup({
 	-- you do for a plugin at the top level, you can do for a dependency.
 	--
 	-- Use the `dependencies` key to specify the dependencies of a particular plugin
-
 	{ -- Fuzzy Finder (files, lsp, etc)
 		"nvim-telescope/telescope.nvim",
 		event = "VimEnter",
@@ -831,7 +839,13 @@ require("lazy").setup({
 			completion = {
 				-- By default, you may press `<c-space>` to show the documentation.
 				-- Optionally, set `auto_show = true` to show the documentation after a delay.
-				documentation = { auto_show = false, auto_show_delay_ms = 500 },
+				documentation = { auto_show = true, auto_show_delay_ms = 500 },
+				ghost_text = { enabled = true },
+				menu = {
+					draw = {
+						treesitter = { "lsp" },
+					},
+				},
 			},
 
 			sources = {
@@ -856,17 +870,17 @@ require("lazy").setup({
 			signature = { enabled = true },
 		},
 	},
-
 	{ -- You can easily change to a different colorscheme.
 		-- Change the name of the colorscheme plugin below, and then
 		-- change the command in the config to whatever the name of that colorscheme is.
 		--
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-		"folke/tokyonight.nvim",
+		"rose-pine/neovim",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		config = function()
 			---@diagnostic disable-next-line: missing-fields
-			require("tokyonight").setup({
+			require("rose-pine").setup({
+				variant = "dawn",
 				styles = {
 					comments = { italic = true }, -- Disable italics in comments
 				},
@@ -875,7 +889,7 @@ require("lazy").setup({
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("tokyonight-night")
+			vim.cmd.colorscheme("rose-pine")
 		end,
 	},
 
@@ -1035,7 +1049,7 @@ require("lazy").setup({
 	-- require 'kickstart.plugins.debug',
 	-- require 'kickstart.plugins.indent_line',
 	-- require 'kickstart.plugins.lint',
-	-- require 'kickstart.plugins.autopairs',
+	-- require("kickstart.plugins.autopairs"),
 	-- require 'kickstart.plugins.neo-tree',
 	-- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
