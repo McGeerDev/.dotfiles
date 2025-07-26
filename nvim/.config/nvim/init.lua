@@ -91,7 +91,6 @@ vim.keymap.set("n", "<Ctrl>d", "<C-d>zz")
 
 -- Exit view and insert modes
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode" })
---vim.keymap.set("v", "jk", "<Esc>", { desc = "Exit visual mode" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -100,12 +99,6 @@ vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-
--- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -155,12 +148,6 @@ rtp:prepend(lazypath)
 require("lazy").setup({
 	{ import = "plugins" },
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-	{
-		"nmac427/guess-indent.nvim", -- Detect tabstop and shiftwidth automatically
-		config = function()
-			require("guess-indent").setup({})
-		end,
-	},
 	-- NOTE: Plugins can also be added by using a table,
 	-- with the first argument being the link and the following
 	-- keys can be used to configure plugin behavior/loading/etc.
@@ -179,74 +166,6 @@ require("lazy").setup({
 	--        end,
 	--    }
 	--
-	-- Here is a more advanced example where we pass configuration
-	-- options to `gitsigns.nvim`.
-	--
-	-- See `:help gitsigns` to understand what the configuration keys do
-	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
-		"lewis6991/gitsigns.nvim",
-		opts = {
-			signs = {
-				add = { text = "+" },
-				change = { text = "~" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-			},
-		},
-	},
-	{
-		"folke/flash.nvim",
-		event = "VeryLazy",
-		---@type Flash.Config
-		opts = {},
-  -- stylua: ignore
-  keys = {
-    { "f", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-    { "F", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-    { "t", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-    { "T", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-    { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-  },
-	},
-	{
-		"f-person/git-blame.nvim",
-		-- load the plugin at startup
-		event = "VeryLazy",
-		-- Because of the keys part, you will be lazy loading this plugin.
-		-- The plugin will only load once one of the keys is used.
-		-- If you want to load the plugin at startup, add something like event = "VeryLazy",
-		-- or lazy = false. One of both options will work.
-		opts = {
-			-- your configuration comes here
-			-- for example
-			enabled = true, -- if you want to enable the plugin
-			message_template = " <summary> • <date> • <author> • <<sha>>", -- template for the blame message, check the Message template section for more options
-			date_format = "%m-%d-%Y %H:%M:%S", -- template for the date, check Date format section for more options
-			virtual_text_column = 1, -- virtual text start column, check Start virtual text at column section for more options
-		},
-	},
-	{
-		"NeogitOrg/neogit",
-		dependencies = {
-			"nvim-lua/plenary.nvim", -- required
-			"sindrets/diffview.nvim", -- optional - Diff integration
-
-			-- Only one of these is needed.
-			"nvim-telescope/telescope.nvim", -- optional
-		},
-
-		keys = {
-			{
-				"<leader>g",
-				mode = { "n", "x", "o" },
-				function()
-					require("neogit").open()
-				end,
-				desc = "Git",
-			},
-		},
-	},
 
 	-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
 	--
@@ -261,70 +180,6 @@ require("lazy").setup({
 	--
 	-- Then, because we use the `opts` key (recommended), the configuration runs
 	-- after the plugin has been loaded as `require(MODULE).setup(opts)`.
-
-	{ -- Useful plugin to show you pending keybinds.
-		"folke/which-key.nvim",
-		event = "VimEnter", -- Sets the loading event to 'VimEnter'
-		opts = {
-			-- delay between pressing a key and opening which-key (milliseconds)
-			-- this setting is independent of vim.o.timeoutlen
-			delay = 0,
-			icons = {
-				-- set icon mappings to true if you have a Nerd Font
-				mappings = vim.g.have_nerd_font,
-				-- If you are using a Nerd Font: set icons.keys to an empty table which will use the
-				-- default which-key.nvim defined Nerd Font icons, otherwise define a string table
-				keys = vim.g.have_nerd_font and {} or {
-					Up = "<Up> ",
-					Down = "<Down> ",
-					Left = "<Left> ",
-					Right = "<Right> ",
-					C = "<C-…> ",
-					M = "<M-…> ",
-					D = "<D-…> ",
-					S = "<S-…> ",
-					CR = "<CR> ",
-					Esc = "<Esc> ",
-					ScrollWheelDown = "<ScrollWheelDown> ",
-					ScrollWheelUp = "<ScrollWheelUp> ",
-					NL = "<NL> ",
-					BS = "<BS> ",
-					Space = "<Space> ",
-					Tab = "<Tab> ",
-					F1 = "<F1>",
-					F2 = "<F2>",
-					F3 = "<F3>",
-					F4 = "<F4>",
-					F5 = "<F5>",
-					F6 = "<F6>",
-					F7 = "<F7>",
-					F8 = "<F8>",
-					F9 = "<F9>",
-					F10 = "<F10>",
-					F11 = "<F11>",
-					F12 = "<F12>",
-				},
-			},
-
-			-- Document existing key chains
-			spec = {
-				{ "<leader>s", group = "[S]earch" },
-				{ "<leader>t", group = "[T]oggle" },
-				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
-			},
-		},
-	},
-	{
-		"stevearc/oil.nvim",
-		---@module 'oil'
-		---@type oil.SetupOpts
-		opts = {},
-		-- Optional dependencies
-		dependencies = { { "echasnovski/mini.icons", opts = {} } },
-		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-		lazy = false,
-	},
 	-- NOTE: Plugins can specify dependencies.
 	--
 	-- The dependencies are proper plugin specifications as well - anything
@@ -724,48 +579,6 @@ require("lazy").setup({
 			})
 		end,
 	},
-
-	{ -- Autoformat
-		"stevearc/conform.nvim",
-		event = { "BufWritePre" },
-		cmd = { "ConformInfo" },
-		keys = {
-			{
-				"<leader>f",
-				function()
-					require("conform").format({ async = true, lsp_format = "fallback" })
-				end,
-				mode = "",
-				desc = "[F]ormat buffer",
-			},
-		},
-		opts = {
-			notify_on_error = false,
-			format_on_save = function(bufnr)
-				-- Disable "format_on_save lsp_fallback" for languages that don't
-				-- have a well standardized coding style. You can add additional
-				-- languages here or re-enable it for the disabled ones.
-				local disable_filetypes = { c = true, cpp = true }
-				if disable_filetypes[vim.bo[bufnr].filetype] then
-					return nil
-				else
-					return {
-						timeout_ms = 500,
-						lsp_format = "fallback",
-					}
-				end
-			end,
-			formatters_by_ft = {
-				lua = { "stylua" },
-				-- Conform can also run multiple formatters sequentially
-				-- python = { "isort", "black" },
-				--
-				-- You can use 'stop_after_first' to run the first available formatter from the list
-				-- javascript = { "prettierd", "prettier", stop_after_first = true },
-			},
-		},
-	},
-
 	{ -- Autocompletion
 		"saghen/blink.cmp",
 		event = "VimEnter",
@@ -924,7 +737,9 @@ require("lazy").setup({
 			--  and try some other statusline plugin
 			local statusline = require("mini.statusline")
 			-- set use_icons to true if you have a Nerd Font
-			statusline.setup({ use_icons = vim.g.have_nerd_font })
+			statusline.setup({
+				use_icons = vim.g.have_nerd_font,
+			})
 
 			-- You can configure sections in the statusline by overriding their
 			-- default behavior. For example, here we set the section for
@@ -932,6 +747,10 @@ require("lazy").setup({
 			---@diagnostic disable-next-line: duplicate-set-field
 			statusline.section_location = function()
 				return "%2l:%-2v"
+			end
+			---@diagnostic disable-next-line: duplicate-set-field
+			statusline.section_mode = function()
+				return "%-5{%v:lua.string.upper(v:lua.vim.fn.mode())%}"
 			end
 
 			-- ... and there is more!
@@ -986,66 +805,6 @@ require("lazy").setup({
 	--  Here are some example plugins that I've included in the Kickstart repository.
 	--  Uncomment any of the lines below to enable them (you will need to restart nvim).
 	--
-	{
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("harpoon"):setup()
-		end,
-		keys = {
-			{
-				"<leader>A",
-				function()
-					require("harpoon"):list():add()
-				end,
-				desc = "harpoon file",
-			},
-			{
-				"<leader>a",
-				function()
-					local harpoon = require("harpoon")
-					harpoon.ui:toggle_quick_menu(harpoon:list())
-				end,
-				desc = "harpoon quick menu",
-			},
-			{
-				"<C-h>",
-				function()
-					require("harpoon"):list():select(1)
-				end,
-				desc = "harpoon to file 1",
-			},
-			{
-				"<C-j>",
-				function()
-					require("harpoon"):list():select(2)
-				end,
-				desc = "harpoon to file 2",
-			},
-			{
-				"<C-k>",
-				function()
-					require("harpoon"):list():select(3)
-				end,
-				desc = "harpoon to file 3",
-			},
-			{
-				"<C-l>",
-				function()
-					require("harpoon"):list():select(4)
-				end,
-				desc = "harpoon to file 4",
-			},
-			{
-				"<C-;>",
-				function()
-					require("harpoon"):list():select(5)
-				end,
-				desc = "harpoon to file 5",
-			},
-		},
-	},
 	-- require 'kickstart.plugins.debug',
 	-- require 'kickstart.plugins.indent_line',
 	-- require 'kickstart.plugins.lint',
