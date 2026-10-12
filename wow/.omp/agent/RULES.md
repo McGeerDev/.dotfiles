@@ -82,3 +82,17 @@ An `eval` cell gets 30 seconds unless you pass `timeout`. Past that the worker
 is killed and every variable from earlier cells is gone. Set `timeout` on any
 cell that scans session transcripts, walks a large tree or waits on the
 network.
+
+## Secret-path guard
+
+`rules-guard` treats any word in a bash command or `eval` code that starts
+with `.env` as a dotenv file and blocks the call. These harmless forms trip
+it, so write them another way:
+
+- Bun shell's `.env({...})`: put the variables in front of the command,
+  `` Bun.$`FOO=1 cmd` ``, which keeps the rest of the environment.
+- A jq or jsonpath step that starts with `.env`, such as `.environments[]`
+  or `.env[*]`: write `.["environments"][]`, or use `-o json` and jq
+  `.["env"]`.
+
+A real dotenv path stays blocked: ask the User for the value.
